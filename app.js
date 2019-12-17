@@ -2,12 +2,16 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const graphqlHttp = require('express-graphql');
 const { buildSchema } = require('graphql');
+const mongoose = require('mongoose');
+
+//import my model 
+const Event = require('./models/event');
+
 
 const app = express();
 
 
-//will replace this in production, aka use database
-const events = [];
+
 
 // app.get('/',(req,res,next)=>{
 //     res.send('Hello Muyang, this is a initial test!');
@@ -51,20 +55,34 @@ app.use('/graphql',
     //resolver functions:
     rootValue: {
         events: () => {
-            return events;
+            return Event.find()
+            .then(events=>{
+                return events.map(event =>{
+                    return { ...event._doc };
+                });
+
+            }).catch(err=> {
+                throw err;
+                });
         },
 
         createEvent: (args)=>{
-            const event = {
-                _id: Math.random().toString(),
+            const event = new Event({
                 title: args.eventInput.title,
                 description: args.eventInput.description,
                 price: +args.eventInput.price,
-                date: args.eventInput.date
-                // date: new Date().toISOString()
-            };
-            events.push(event);
-            return event;
+                date: new Date(args.eventInput.date)
+            });
+            return event.save()
+            .then(result => {
+                console.log(result);
+                return { ...result._doc };
+            })
+            .catch(err => {
+                console.log(err);
+                throw err;
+            });
+    
         }
     },
     graphiql: true
@@ -74,5 +92,19 @@ app.use('/graphql',
 
 app.use(bodyParser.json());
 
-// developing local host setup
-app.listen(3000);
+mongoose
+    .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@labcluster-km0yf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
+    .then(()=>{
+        //connect to local server once logged in mongoDB
+        app.listen(3000);
+    }
+
+    ).catch(
+        err=>{
+            console.log(err);
+        }
+    )
+
+
+// // developing local host setup
+// app.listen(3000);
