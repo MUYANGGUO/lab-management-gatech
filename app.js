@@ -11,6 +11,29 @@ const User = require('./models/user');
 
 const app = express();
 
+const user = userID =>{
+    return User.findById(userID).then(
+        user=>{
+            return { ...user._doc , createdEvents: events.bind(this, user._doc.createdEvents)};
+        }
+    ).catch(err=>{
+        throw err;
+    });
+};
+
+const events = eventIds =>{
+    return Event.find({_id: {$in: eventIds}}).then(
+        events=>{
+            return events.map(event=>{
+                return { ...event._doc, creator: user.bind(this, event.creator)};
+            })
+        }
+    ).catch(
+        err=>{
+            throw err;
+        }
+    )
+};
 
 
 
@@ -28,12 +51,14 @@ app.use('/graphql',
             description: String!
             price: Float!
             date: String! 
+            creator: User!
         }
 
         type User {
             _id: ID!
             email: String!
             password: String
+            createdEvents: [Event!]
         }
 
         input EventInput {
@@ -71,7 +96,7 @@ app.use('/graphql',
             return Event.find()
             .then(events=>{
                 return events.map(event =>{
-                    return { ...event._doc };
+                    return { ...event._doc, creator: user.bind(this, event._doc.creator)};
                 });
 
             }).catch(err=> {
@@ -91,7 +116,7 @@ app.use('/graphql',
             let createdEvents;
             return event.save()
             .then(result => {
-                createdEvents = { ...result._doc };
+                createdEvents = { ...result._doc, creator: user.bind(this, result._doc.creator)};
                 return User.findById('5dfa82afb72ab3592c651cb9')
 
             })
