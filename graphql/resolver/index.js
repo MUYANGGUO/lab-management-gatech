@@ -3,108 +3,108 @@ const bcrypt = require('bcryptjs');
 //import my model 
 const Event = require('../../models/event');
 const User = require('../../models/user');
-const user = userID =>{
-    return User.findById(userID).then(
-        user=>{
-            return { ...user._doc , createdEvents: events.bind(this, user._doc.createdEvents)};
-        }
-    ).catch(err=>{
+
+const user = async userID =>{
+    try{
+    const user = await User.findById(userID);
+
+    return { ...user._doc , createdEvents: events.bind(this, user._doc.createdEvents)};
+    
+    } catch (err){
         throw err;
-    });
+    }
 };
 
-const events = eventIds =>{
-    return Event.find({_id: {$in: eventIds}}).then(
-        events=>{
-            return events.map(event=>{
-                return {
-                     ...event._doc, 
-                    date: new Date(event._doc.date).toISOString(),
-                    creator: user.bind(this, event.creator
-                        )};
-            })
-        }
-    ).catch(
-        err=>{
+const events = async eventIds =>{
+    try {
+    const events = await Event.find({_id: {$in: eventIds}})
+    return events.map(event=>
+        {
+        return {
+            ...event._doc,
+            date: dateToString(event._doc.date),
+            creator: user.bind(this, event.creator)
+          };
+        });
+
+        } catch (err){
             throw err;
         }
-    )
+
 };
 
 
 
 
 module.exports = {
-    events: () => {
-        return Event.find()
-        .then(events=>{
-            return events.map(event =>{
+    events: async () => {
+        try {
+        const events = await Event.find();
+        return events
+            .map(event =>{
                 return { ...event._doc, 
                     date: new Date(event._doc.date).toISOString(),
                     creator: user.bind(this, event._doc.creator)};
             });
 
-        }).catch(err=> {
+        } catch (err){
             throw err;
-            });
+        }
     },
 
-    createEvent: (args)=>{
+    createEvent: async (args)=>{
+        try {
         const event = new Event({
             title: args.eventInput.title,
             description: args.eventInput.description,
             price: +args.eventInput.price,
             date: new Date(args.eventInput.date),
             //hardcoded here, dummy id for dev, will change later
-            creator: '5dfa82afb72ab3592c651cb9'
+            creator: '5dfe64313c48b871429f2d93'
         });
         let createdEvents;
-        return event.save()
-        .then(result => {
+        const result = await event
+        .save()
+   
             createdEvents = { ...result._doc, 
                 date: new Date(event._doc.date).toISOString(),
                 creator: user.bind(this, result._doc.creator)};
-            return User.findById('5dfa82afb72ab3592c651cb9')
 
-        })
-        .then(user=>{
-            if (!user){
+            const creator = await User.findById('5dfe64313c48b871429f2d93');
+
+
+     
+            if (!creator){
                 throw new Error('User not exists.');
             }
-            user.createdEvents.push(event);
-            return user.save();
-        })
-        .then(result=>{
+            creator.createdEvents.push(event);
+            await creator.save();
+
             return createdEvents;
-        })
-        .catch(err => {
-            console.log(err);
+        } catch{ 
             throw err;
-        });
+        }
 
     },
-    createUser: args =>{
+    createUser: async args =>{
         //avoid repeated user
-        return User.findOne({email: args.userInput.email}).then(user=>{
-            if (user) {
+        try{
+        const existinguser = await User.findOne({email: args.userInput.email})
+            if (existinguser) {
                 throw new Error('User exists already.')
             }
-            return bcrypt
+            const hashedpassword = await bcrypt
             .hash(args.userInput.password,12);
-        })
-        .then(hashedpassword=>{
+
             const user = new User({
                 email: args.userInput.email,
                 password: hashedpassword
-            });
-            return user.save();
-            
-        })
-        .then(result=>{
-            return { ...result._doc, password: null}
-        })
-        .catch(err=>{
-                throw err;
-        });
+            })
+            const result = await user.save();
+
+            return { ...result._doc, password: null};
+        } catch (err) {
+            throw err;
+        }
     }
 };
