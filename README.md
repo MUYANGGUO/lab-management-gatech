@@ -2,7 +2,21 @@
 &emsp;[![Wiki](https://img.shields.io/badge/See--Wiki--Pages-grey?style=for-the-badge&logo=Github)](https://github.com/MUYANGGUO/lab-management-gatech/wiki)&emsp;[![Follow MY Github](https://img.shields.io/badge/Follow--My--Github-purple?style=for-the-badge&logo=Github)](https://github.com/MUYANGGUO)
 # Lab Management Web APP
 A lab management tool featuring students tool check in/ check out management, lab assets tracking, lab manager notifications, consumables/usage data stats visualizations.<br/>
-It is a experimenting product developed by MUYANG GUO, a former head TA of ME 2110 class @ Georgia Tech, as a personal web development learning project. <br/>
+
+
+# Author
+The project is an experimenting and a personal web development learning project developed by MUYANG GUO, a former head TA of ME 2110 class @ Georgia Tech. <br/>
+<p align="left">
+<a href="https://www.linkedin.com/in/muyang-guo-445a3465/">MUYANG GUO</a> <br> <br>
+<a href="https://www.linkedin.com/in/muyang-guo-445a3465/">
+<img src="https://simpleicons.org/icons/linkedin.svg" alt="Linkedin" width=16 height=16 > Linkedin
+</a> <br>
+<a href="https://www.instagram.com/muyang_guo/">
+<img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" width=16 height=16 > Instagram
+</a> 
+
+
+
 # Build
 
 :arrow_right: Fork and git clone this project repository, `git clone https://github.com/MUYANGGUO/lab-management-gatech.git`
@@ -14,3 +28,7 @@ It is a experimenting product developed by MUYANG GUO, a former head TA of ME 21
 :arrow_right: run `npm start` to start the localhost server.
 
 > the completed version is maintained in master branch. You may notice other branch in build phase or archived as a documentation purpose.
+
+
+
+
