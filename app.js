@@ -32,7 +32,7 @@ app.use('/graphql',
 app.use(bodyParser.json());
 
 mongoose
-    .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@labcluster-km0yf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@labcluster-km0yf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(()=>{
         //connect to local server once logged in mongoDB
         app.listen(3000);
