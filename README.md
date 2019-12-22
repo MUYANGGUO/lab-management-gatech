@@ -6,10 +6,10 @@ A lab management tool featuring students tool check in/ check out management, la
 <p align="right">
   Project Stacks:
 <a href="https://reactjs.org/">
-<img src="https://simpleicons.org/icons/react.svg" alt="REACT" width=16 height=16 > REACT
+<img src="https://simpleicons.org/icons/react.svg" alt="REACT" width=16 height=16 > React
 </a> 
 <a href="https://graphql.org/">
-<img src="https://simpleicons.org/icons/graphql.svg" alt="GRAPHQL" width=16 height=16 > GRAPHQL
+<img src="https://simpleicons.org/icons/graphql.svg" alt="GRAPHQL" width=16 height=16 > GraphQL
 </a> 
 <a href="https://mongodb.com">
 <img src="https://simpleicons.org/icons/mongodb.svg" alt="MongoDB" width=16 height=16 > MongoDB
