@@ -81,7 +81,7 @@ module.exports = {
             await creator.save();
 
             return createdEvents;
-        } catch(err){ 
+        } catch (err){ 
             throw err;
         }
 
