@@ -13,4 +13,4 @@ It is a experimenting product developed by MUYANG GUO, a former head TA of ME 21
 
 :arrow_right: run `npm start` to start the localhost server.
 
-> the completed version is maintained in master branch. You may notice other branches in build phase or as a documentation purpose.
+> the completed version is maintained in master branch. You may notice other branch in build phase or archived as a documentation purpose.
