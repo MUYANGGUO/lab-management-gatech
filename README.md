@@ -3,6 +3,18 @@
 # Lab Management Web APP
 A lab management tool featuring students tool check in/ check out management, lab assets tracking, lab manager notifications, consumables/usage data stats visualizations.<br/>
 
+<p align="right">
+  Project Stacks:
+<a href="https://reactjs.org/">
+<img src="https://simpleicons.org/icons/react.svg" alt="REACT" width=16 height=16 > REACT
+</a> 
+<a href="https://graphql.org/">
+<img src="https://simpleicons.org/icons/graphql.svg" alt="GRAPHQL" width=16 height=16 > GRAPHQL
+</a> 
+<a href="https://mongodb.com">
+<img src="https://simpleicons.org/icons/mongodb.svg" alt="MongoDB" width=16 height=16 > MongoDB
+</a> 
+</p>
 
 # Author
 The project is an experimenting and a personal web development learning project developed by MUYANG GUO, a former head TA of ME 2110 class @ Georgia Tech. <br/>
