@@ -40,6 +40,3 @@ The project is an experimenting and a personal web development learning project 
 
 > the completed version is maintained in master branch. You may notice other branch in build phase or archived as a documentation purpose.
 
-
-
-
