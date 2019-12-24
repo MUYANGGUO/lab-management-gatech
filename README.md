@@ -4,7 +4,7 @@
 A lab management tool featuring students tool check in/ check out management, lab assets tracking, lab manager notifications, consumables/usage data stats visualizations.<br/>
 
 <p align="right">
-  Project Stacks:
+  Project Stacks :
 <a href="https://reactjs.org/">
 <img src="https://simpleicons.org/icons/react.svg" alt="REACT" width=16 height=16 > React
 </a> 
@@ -17,12 +17,12 @@ A lab management tool featuring students tool check in/ check out management, la
 </p>
 
 # Author
-The project is an experimenting and a personal web development learning project developed by MUYANG GUO, a former head TA of ME 2110 class @ Georgia Tech. <br/>
-<p align="left">
-<a href="https://www.linkedin.com/in/muyang-guo-445a3465/">MUYANG GUO</a> <br> <br>
+The project is an experimenting and a personal web development learning project developed by [MUYANG GUO](https://www.linkedin.com/in/muyang-guo-445a3465/), a former head TA of ME 2110 class @ Georgia Tech. <br/>
+<p align="right">
+<a href="">Follow @: </a>  
 <a href="https://www.linkedin.com/in/muyang-guo-445a3465/">
 <img src="https://simpleicons.org/icons/linkedin.svg" alt="Linkedin" width=16 height=16 > Linkedin
-</a> <br>
+</a> 
 <a href="https://www.instagram.com/muyang_guo/">
 <img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" width=16 height=16 > Instagram
 </a> 
