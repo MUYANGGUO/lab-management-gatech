@@ -19,9 +19,8 @@ A lab management tool featuring students tool check in/ check out management, la
 # Author
 The project is an experimenting and a personal web development learning project developed by [MUYANG GUO](https://www.linkedin.com/in/muyang-guo-445a3465/), a former head TA of ME 2110 class @ Georgia Tech. <br/>
 <p align="right">
-<a href="">Follow @: </a>  
 <a href="https://www.linkedin.com/in/muyang-guo-445a3465/">
-<img src="https://simpleicons.org/icons/linkedin.svg" alt="Linkedin" width=16 height=16 > Linkedin
+<img src="https://simpleicons.org/icons/linkedin.svg" alt="Linkedin" width=16 height=16 > Linkedin /
 </a> 
 <a href="https://www.instagram.com/muyang_guo/">
 <img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" width=16 height=16 > Instagram
