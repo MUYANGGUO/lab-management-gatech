@@ -25,7 +25,7 @@ The project is an experimenting and a personal web development learning project 
 <a href="https://www.instagram.com/muyang_guo/">
 <img src="https://simpleicons.org/icons/instagram.svg" alt="Instagram" width=16 height=16 > Instagram
 </a> 
-
+</p>
 
 
 # Build
