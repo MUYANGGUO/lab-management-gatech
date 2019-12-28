@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 //import my model 
 const Event = require('../../models/event');
 const User = require('../../models/user');
-
+const Student = require('../../models/student');
 const user = async userID =>{
     try{
     const user = await User.findById(userID);
@@ -14,6 +14,10 @@ const user = async userID =>{
         throw err;
     }
 };
+
+
+
+
 
 const events = async eventIds =>{
     try {
@@ -36,6 +40,7 @@ const events = async eventIds =>{
 
 
 
+
 module.exports = {
     events: async () => {
         try {
@@ -45,6 +50,20 @@ module.exports = {
                 return { ...event._doc, 
                     date: new Date(event._doc.date).toISOString(),
                     creator: user.bind(this, event._doc.creator)};
+            });
+
+        } catch (err){
+            throw err;
+        }
+    },
+    students: async () => {
+        try {
+        const students = await Student.find();
+        return students
+            .map(student =>{
+                return { ...student._doc, 
+       
+                };
             });
 
         } catch (err){
@@ -104,6 +123,24 @@ module.exports = {
 
             return { ...result._doc, password: null};
         } catch (err) {
+            throw err;
+        }
+    },
+    createStudent: async args =>{
+        try{
+            const existingstudent = await Student.findOne({gtid: args.studentInput.gtid})
+            if (existingstudent) {
+                throw new Error('Student is already in records')
+            }
+            const student = new Student({
+                name: args.studentInput.name,
+                email: args.studentInput.email,
+                gtid: args.studentInput.gtid
+            })
+            const result = await student.save();
+            return { ...result._doc };
+        } 
+        catch (err) {
             throw err;
         }
     }

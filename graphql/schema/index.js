@@ -28,14 +28,28 @@ input UserInput {
     password: String!
 }
 
+type Student{
+    _id: ID!
+    name: String!
+    email: String!
+    gtid: String!
+}
+
+input StudentInput {
+    name: String!
+    email: String!
+    gtid: String!
+}
 
 type RootQuery{
     events: [Event!]!
+    students: [Student!]!
 }
 
 type RootMutation{
     createEvent(eventInput: EventInput): Event
     createUser(userInput: UserInput): User
+    createStudent(studentInput: StudentInput): Student
 }
 
 schema{
