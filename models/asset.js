@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const assetSchema = new Schema({
+    asset_id: {
+        type: String,
+        required: true
+    },
     name:{
         type: String,
         required: true
@@ -13,6 +17,7 @@ const assetSchema = new Schema({
         type: String,
         required: true
     },
+    
 });
 
 module.exports = mongoose.model('Asset',assetSchema);

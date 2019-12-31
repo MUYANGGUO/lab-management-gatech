@@ -14,6 +14,12 @@ const studentSchema = new Schema({
         type: String,
         required: true
     },
+    checkedoutLogs: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'Checkingout'
+        }
+    ]
 });
 
 module.exports = mongoose.model('Student',studentSchema);
