@@ -23,13 +23,15 @@ module.exports = {
                 throw new Error('Student is already in records')
             }
             const student = new Student({
-                _id: args.studentInput.gtid,
+                //_id: args.studentInput.gtid.toString()
                 name: args.studentInput.name,
                 email: args.studentInput.email,
                 gtid: args.studentInput.gtid
             })
             const result = await student.save();
-            return { ...result._doc, _id: args.studentInput.gtid.toString()};
+            return { ...result._doc
+                //,_id: args.studentInput.gtid.toString()
+            };
         } 
         catch (err) {
             throw err;
