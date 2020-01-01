@@ -29,7 +29,7 @@ module.exports = {
             asset_id: args.assetInput.asset_type+'/'+args.assetInput.name+'/'+args.assetInput.tag_number,
             name: args.assetInput.name,
             asset_type: args.assetInput.asset_type,
-            tag_number: args.assetInput.tag_number
+            tag_number: args.assetInput.tag_number,
         });
         // let createdAssets;
         const result = await asset.save()

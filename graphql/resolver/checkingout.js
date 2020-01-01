@@ -30,13 +30,23 @@ module.exports = {
             asset: fetchedAsset,
             comments: args.checkingoutInput.comments
         });
-        const result = await checkingout.save();
+       
         const checkedoutbywhom = await Student.findById(args.checkingoutInput.studentId);
             if (!checkedoutbywhom){
                 throw new Error('Students is not in record, warning!');
             }
-            checkedoutbywhom.checkedoutLogs.push(checkingout);
-            await checkedoutbywhom.save();
+            else if (fetchedAsset.status == 'out') {
+
+                throw new Error ('This tool has been checkedout by others')
+
+            }
+            else {
+                const result = await checkingout.save();
+                await fetchedAsset.updateOne({ status: 'out' });
+                await checkedoutbywhom.checkedoutLogs.push(checkingout);
+                await checkedoutbywhom.save();
+                return transformCheckingout(result);
+            }
         // return {
         //     ...result._doc,
         //     // _id: result.id,
@@ -46,27 +56,32 @@ module.exports = {
         //     updatedAt: dateToString(result._doc.updatedAt)
             
         // };
-        return transformCheckingout(result);
+    
     },
     cancelCheckingout: async args =>{
         try {
-            const logobject = await Checkingout.findById(args.cancelcheckingoutInput.checkingoutId);
+            const logObject = await Checkingout.findById(args.cancelcheckingoutInput.checkingoutId);
             const checkingout = await Checkingout.findById(args.cancelcheckingoutInput.checkingoutId).populate('asset');
             const asset = transformAsset(checkingout.asset);
             // const event = {
             //     ...booking.event._doc, 
             //     creator: user.bind(this, booking.event._doc.creator)
             // };
+            
  
             //await Checkingout.deleteOne({ _id: args.checkingoutId });
             const checkedoutbywhom = await Student.findById(args.cancelcheckingoutInput.studentId);
             if (!checkedoutbywhom.checkedoutLogs){
                 throw new Error('Student does not have checkedout records');
             }
-            checkedoutbywhom.checkedoutLogs.pull(logobject);
+            else{
+            await checkedoutbywhom.checkedoutLogs.pull(logObject);
+            const  checkedoutAsset = await Asset.findById(asset._id);
+            await checkedoutAsset.updateOne({ status: 'in-stock' });
             await checkedoutbywhom.save();
             await Checkingout.deleteOne({ _id: args.cancelcheckingoutInput.checkingoutId });
             return asset;
+            }
         } catch (err) {
             throw err;
         }

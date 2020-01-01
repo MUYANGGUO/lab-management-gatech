@@ -75,6 +75,7 @@ type Asset{
     name: String!
     asset_type: String!
     tag_number: String!
+    status: String!
 }
 
 input AssetInput {
