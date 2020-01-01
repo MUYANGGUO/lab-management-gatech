@@ -26,7 +26,8 @@ module.exports = {
                 //_id: args.studentInput.gtid.toString()
                 name: args.studentInput.name,
                 email: args.studentInput.email,
-                gtid: args.studentInput.gtid
+                gtid: args.studentInput.gtid,
+                section: args.studentInput.section
             })
             const result = await student.save();
             return { ...result._doc

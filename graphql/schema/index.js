@@ -21,6 +21,10 @@ input CheckingoutInput {
     studentId: ID!
     comments: String
 }
+input CancelcheckingoutInput {
+    checkingoutId: ID!
+    studentId: ID!
+}
 
 type Event {
     _id: ID!
@@ -54,6 +58,7 @@ type Student{
     name: String!
     email: String!
     gtid: String!
+    section: String
     checkedoutLogs: [Checkingout!]
 }
 
@@ -61,6 +66,7 @@ input StudentInput {
     name: String!
     email: String!
     gtid: String!
+    section: String
 }
 
 type Asset{
@@ -94,7 +100,7 @@ type RootMutation{
     bookEvent(eventId: ID!): Booking!
     cancelBooking(bookingId: ID!): Event!
     createCheckingout(checkingoutInput: CheckingoutInput): Checkingout!
-    cancelCheckingout(checkingoutId: ID!): Asset!
+    cancelCheckingout(cancelcheckingoutInput: CancelcheckingoutInput): Asset!
 }
 
 schema{

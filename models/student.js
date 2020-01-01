@@ -14,6 +14,10 @@ const studentSchema = new Schema({
         type: String,
         required: true
     },
+    section: {
+        type: String,
+        required: false
+        },
     checkedoutLogs: [
         {
         type: Schema.Types.ObjectId,
