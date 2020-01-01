@@ -8,6 +8,10 @@ const checkingoutSchema = new Schema({
     student:{
         type: Schema.Types.ObjectId,
         ref: 'Student'
+    },
+    comments:{
+        type: String,
+        required: false
     }
 },
 {timestamps: true}

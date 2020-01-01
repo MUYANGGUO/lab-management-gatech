@@ -11,6 +11,7 @@ type Checkingout {
     _id: ID!
     asset: Asset!
     student: Student!
+    comments: String
     createdAt: String!
     updatedAt: String!
 }
@@ -18,12 +19,13 @@ type Checkingout {
 input CheckingoutInput {
     assetId: ID!
     studentId: ID!
+    comments: String
 }
 
 type Event {
     _id: ID!
     title: String!
-    description: String!
+    description: String
     price: Float!
     date: String! 
     creator: User!

@@ -25,7 +25,8 @@ module.exports = {
         const fetchedAsset = await Asset.findOne({_id: args.checkingoutInput.assetId});
         const checkingout = new Checkingout({
             student: args.checkingoutInput.studentId,
-            asset: fetchedAsset
+            asset: fetchedAsset,
+            comments: args.checkingoutInput.comments
         });
         const result = await checkingout.save();
         // return {
