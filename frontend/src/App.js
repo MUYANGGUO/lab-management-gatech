@@ -8,6 +8,8 @@ import StudentsPage from './pages/Students';
 import AssetsPage from './pages/Assets';
 import CheckingoutsPage from './pages/Checkingouts';
 import MainNavigation from './components/Navigation/MainNavigation';
+import Footer from './components/Footer/Footer';
+
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
             <Route path="/checkingouts" component = {CheckingoutsPage} />
           </Switch>
         </main>
+        <Footer></Footer>
       </React.Fragment>
     </BrowserRouter>
   );
