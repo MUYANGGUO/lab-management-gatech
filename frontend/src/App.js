@@ -7,21 +7,26 @@ import EventsPage from './pages/Events';
 import StudentsPage from './pages/Students';
 import AssetsPage from './pages/Assets';
 import CheckingoutsPage from './pages/Checkingouts';
+import MainNavigation from './components/Navigation/MainNavigation';
 
 function App() {
   return (
 
     <BrowserRouter>
-      <Switch>
-        
-        <Redirect from="/" to="/auth" exact />
-        <Route path="/auth" component = {AuthPage} />
-        <Route path="/bookings" component = {BookingsPage} />
-        <Route path="/events" component = {EventsPage} />
-        <Route path="/students" component = {StudentsPage} />
-        <Route path="/assets" component = {AssetsPage} />
-        <Route path="/checkingouts" component = {CheckingoutsPage} />
-      </Switch>
+      <React.Fragment>
+        <MainNavigation></MainNavigation>
+        <main className="main-content">
+          <Switch>
+            <Redirect from="/" to="/auth" exact />
+            <Route path="/auth" component = {AuthPage} />
+            <Route path="/bookings" component = {BookingsPage} />
+            <Route path="/events" component = {EventsPage} />
+            <Route path="/students" component = {StudentsPage} />
+            <Route path="/assets" component = {AssetsPage} />
+            <Route path="/checkingouts" component = {CheckingoutsPage} />
+          </Switch>
+        </main>
+      </React.Fragment>
     </BrowserRouter>
   );
 }
