@@ -10,22 +10,23 @@ const mainNavigation = props => (
         <nav className="main-nav-items">
             <ul>
                 <li>
-                    <NavLink to="/auth">Authenticate </NavLink>
+                    
+                    <NavLink to="/auth"><i class="fa fa-fw fa-user"></i> Authenticate </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/events">Events </NavLink>
+                    <NavLink to="/events"> Events </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/bookings">Bookings </NavLink>
+                    <NavLink to="/bookings"> Bookings </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/students">Students </NavLink>
+                    <NavLink to="/students"><i class="fa fa-fw fa-users"></i> Students </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/checkingouts">Checkingouts </NavLink>
+                    <NavLink to="/checkingouts"><i class="fa fa-fw fa-book"></i> Checkingouts </NavLink>
                 </li>
                 <li>
-                    <NavLink to="/assets">Assets </NavLink>
+                    <NavLink to="/assets"><i class="fa fa-fw fa-wrench"></i> Assets </NavLink>
                 </li>
             </ul>
         </nav>
