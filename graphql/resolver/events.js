@@ -19,15 +19,19 @@ module.exports = {
             throw err;
         }
     },
-    createEvent: async (args)=>{
+    createEvent: async (args,req)=>{
         try {
+            // console.log(req.isAuth)
+            if (!req.isAuth) {
+                throw new Error ('Unauthenticated')
+            }
         const event = new Event({
             title: args.eventInput.title,
             description: args.eventInput.description,
             price: +args.eventInput.price,
             date: new Date(args.eventInput.date),
             //hardcoded here, dummy id for dev, will change later
-            creator: '5dfe64313c48b871429f2d93'
+            creator: req.userId
         });
         let createdEvents;
         const result = await event
@@ -38,7 +42,7 @@ module.exports = {
             //     creator: user.bind(this, result._doc.creator)};
             createdEvents = transformEvent(result);
 
-            const creator = await User.findById('5dfe64313c48b871429f2d93');
+            const creator = await User.findById(req.userId);
 
 
      
