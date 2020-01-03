@@ -23,7 +23,7 @@ app.use((req, res, next) => {
     }
     next();
   });
-  
+
 app.use(isAuth);
 
 // app.get('/',(req,res,next)=>{
@@ -47,7 +47,7 @@ mongoose
     .connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@labcluster-km0yf.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,{ useNewUrlParser: true, useUnifiedTopology: true })
     .then(()=>{
         //connect to local server once logged in mongoDB
-        app.listen(3000);
+        app.listen(8000);
     }
 
     ).catch(

@@ -9,6 +9,7 @@
     padding: 0 1rem;
     display: flex;
     align-items: center;
+    justify-content: space-between;
 
 
 }
@@ -17,17 +18,20 @@
     margin: 0;
     font-size: 2rem;
     color: darkgray;
+
   
 }
 
 .main-nav-items {
     margin-left: 1.5rem;
     margin-top: 0.5rem;
+    margin-right: 2rem;
  
     
 }
 
 .main-nav-items ul{
+    margin-right: 100;
     margin: 0;
     padding: 0;
     list-style:  none;

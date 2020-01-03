@@ -11,8 +11,8 @@ const footer = props => (
         <nav className="footer-items">
             <ul>   
             
-                <li><a href="https://github.com/MUYANGGUO/lab-management-gatech" ><i class="fa fa-fw fa-github"></i>:  Follow the project @ Github </a></li>
-                <li><a href="https://www.linkedin.com/in/muyang-guo-445a3465/" ><i class="fa fa-fw fa-linkedin"></i>:  Author: Muyang Guo </a></li>
+                <li><a href="https://github.com/MUYANGGUO/lab-management-gatech" ><i className="fa fa-fw fa-github"></i>:  Follow the project @ Github </a></li>
+                <li><a href="https://www.linkedin.com/in/muyang-guo-445a3465/" ><i className="fa fa-fw fa-linkedin"></i>:  Author: Muyang Guo </a></li>
                 <label>Version: 1.0</label>
             </ul>
             
