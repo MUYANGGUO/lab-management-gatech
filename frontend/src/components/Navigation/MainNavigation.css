@@ -3,14 +3,14 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 3.5rem;
+    height: 6rem;
     background-color: black;
     color: white;
     padding: 0 1rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
+    opacity: 0.6;
 
 }
 
@@ -36,22 +36,32 @@
     padding: 0;
     list-style:  none;
     display: flex;
+    align-items: center;
    
     
 }
 .main-nav-items li{
     margin: 1rem 1rem;
 }
-.main-nav-items a{
+.main-nav-items a,
+.main-nav-items button
+{
     text-decoration: none;
     color: lightgray;
     opacity: 0.8;
-    font-size: 1.2rem ;
+    font-size: 1.5rem ;
+    border: none;
+    /* font: inherit; */
+    background: transparent;
+    cursor: pointer;
+    margin:0;
 }
 
 .main-nav-items a:hover,
 .main-nav-items a:active,
-.main-nav-items a.active {
+.main-nav-items a.active,
+.main-nav-items button:hover, 
+.main-nav-items button:active {
     color: white;
     opacity: 1;
     /* background-color:darkgray; */
