@@ -1,0 +1,8 @@
+.note-list {
+    margin-top: 4rem;
+    width: 30rem;
+    max-width: 90%;
+    margin: 2rem auto;
+    list-style: none;
+    padding: 0;
+}

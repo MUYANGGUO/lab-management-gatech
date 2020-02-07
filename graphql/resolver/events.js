@@ -28,7 +28,6 @@ module.exports = {
         const event = new Event({
             title: args.eventInput.title,
             description: args.eventInput.description,
-            price: +args.eventInput.price,
             date: new Date(args.eventInput.date),
             //hardcoded here, dummy id for dev, will change later
             creator: req.userId

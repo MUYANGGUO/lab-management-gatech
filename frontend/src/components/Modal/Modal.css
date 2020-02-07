@@ -1,6 +1,6 @@
 .modal {
     width: 90%;
-    background-color: lightcyan;
+    background-color: whitesmoke;
     box-shadow: 0 2px 8px rgba(0,0,0,0.26);
     position: fixed;
     top: 50%;
@@ -10,22 +10,24 @@
 
 .modal-header {
     padding: 1rem;
-    background-color:lightskyblue;
+    background-color:black;
+    font-size: 1.75rem;
     color: white;
 }
 
 .modal-header h1 {
     margin: 0;
-    font-size: 1.25rem;
+   
 }
 
 .modal-content {
     padding: 1rem;
+    font-size: 1.25rem;
 }
 
 .modal-btn {
     margin-top: 1rem;
-    background-color:lightskyblue;
+    background-color:black;
     color: white;
     font: inherit;
     /* border: 2px solid black; */
@@ -35,6 +37,7 @@
     box-shadow: 1px 1px 5px rgba(0,0,0,0.25);
     cursor: pointer;
     width: 100%;
+    font-size: 1.25rem;
 }
 
 .modal-actions {

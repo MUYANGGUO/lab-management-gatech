@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import './App.css';
 import AuthPage from './pages/Auth';
 import BookingsPage from './pages/Bookings';
-import EventsPage from './pages/Events';
+import NotesPage from './pages/Notes';
 import StudentsPage from './pages/Students';
 import AssetsPage from './pages/Assets';
 import CheckingoutsPage from './pages/Checkingouts';
@@ -41,7 +41,7 @@ class App extends Component {
               {this.state.token && 
               <Route path="/bookings" component = {BookingsPage} />}
               {!this.state.token && (<Route path="/auth" component = {AuthPage} />)}
-              <Route path="/events" component = {EventsPage} />
+              <Route path="/events" component = {NotesPage} />
               <Route path="/students" component = {StudentsPage} />
               <Route path="/assets" component = {AssetsPage} />
               {this.state.token && 

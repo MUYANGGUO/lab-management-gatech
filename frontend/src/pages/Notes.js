@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Modal from '../components/Modal/Modal';
 import Backdrop from '../components/Backdrop/Backdrop';
 import AuthContext from '../context/auth-context';
+import EventList from '../components/Notes/NotesList/NoteList';
 import './Notes.css'
 
 class EventsPage extends Component {
@@ -14,7 +15,6 @@ class EventsPage extends Component {
     constructor(props){
         super(props);
         this.titleElRef= React.createRef();
-        this.priceElRef= React.createRef();
         this.dateElRef= React.createRef();
         this.descriptionElRef= React.createRef();
     };
@@ -30,32 +30,26 @@ class EventsPage extends Component {
     modalConfirmHandler = () => {
         this.setState({creating: false});
         const title = this.titleElRef.current.value;
-        const price = +this.priceElRef.current.value;
+        
         const date = this.dateElRef.current.value;
         const description = this.descriptionElRef.current.value;
         if (
             title.trim().length ===0 ||
-            price <=0 ||
             date.trim().length === 0 ||
             description.trim().length === 0){
             return;
         }
-        const event = {title, price,date,description};
+        const event = {title,date,description};
         console.log(event);
 
         const requestBody = {
               query: `
                 mutation {
-                  createEvent(eventInput: {title: "${title}", description: "${description}", price: ${price}, date:"${date}"}) {
+                  createEvent(eventInput: {title: "${title}", description: "${description}", date:"${date}"}) {
                     _id
                     title
                     description
-                    price
                     date
-                    creator {
-                        _id
-                        email
-                    }
                   }
                 }
               `
@@ -78,8 +72,20 @@ class EventsPage extends Component {
               return res.json();
             })
             .then(resData => {
-              console.log(resData);
-                this.fetchEvents();
+              this.setState(prevState =>{
+                const updatedEvents = [...prevState.events];
+                updatedEvents.push({
+                  _id: resData.data.createEvent._id,
+                  title:resData.data.createEvent.title,
+                  description:resData.data.createEvent.description,
+                  date:resData.data.createEvent.date,
+                  creator :{
+                      _id: this.context.userId,
+                  }
+                });
+                return {events:updatedEvents}
+              })
+
             })
             .catch(err => {
               console.log(err);
@@ -101,7 +107,6 @@ class EventsPage extends Component {
                   _id
                   title
                   description
-                  price
                   date
                   creator {
                       _id
@@ -139,9 +144,7 @@ class EventsPage extends Component {
     };
 
     render() {
-        const eventList = this.state.events.map(event=>{
-        return <li key={event._id} className="notes-list-item">{event.title}</li>;
-        });
+
         return (
         <React.Fragment>
             {this.state.creating && <Backdrop></Backdrop>}
@@ -152,16 +155,12 @@ class EventsPage extends Component {
                         <input type = "text" id="title" ref={this.titleElRef}></input>
                     </div>
                     <div className="form-control">
-                        <label htmlFor="price">Price</label>
-                        <input type = "number" id="price" ref={this.priceElRef}></input>
-                    </div>
-                    <div className="form-control">
                         <label htmlFor="date">Date</label>
                         <input type = "datetime-local" id="date" ref={this.dateElRef}></input>
                     </div>
                     <div className="form-control">
                         <label htmlFor="description">Description</label>
-                        <textarea id = "discription" rows="5" ref={this.descriptionElRef}></textarea>
+                        <textarea id = "discription" rows="10" ref={this.descriptionElRef}></textarea>
                     </div>
                 </form>
             </Modal>}
@@ -169,9 +168,10 @@ class EventsPage extends Component {
             <p>Create New Notes</p>
             <button className="btn" onClick = {this.startCreateEventHandler}>Create !</button>
         </div>}
-        <ul className="notes-list">
-            {eventList}
-        </ul>
+        <EventList 
+        events = {this.state.events}
+        authUserId = {this.context.userId} 
+        />
         </React.Fragment>
         );
 
